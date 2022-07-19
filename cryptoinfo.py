@@ -45,15 +45,9 @@ def initial():
         rprices.append(price)
         
 
-    
-    
-    # data=pd.DataFrame([rprices], columns=names)
-    
-    # data.index=[f'PRICES IN $ at {current_time} on {today}']
     data =pd.DataFrame({'NAMES':names,f'PRICES IN $ at {current_time} on {today}':rprices})
     data.to_csv('Cryptocurrencyinfo.csv' )
-    # data.to_excel(writer,sheet_name='sheet1')
-    # writer.save()
+
     return data
     
 def second():
@@ -89,10 +83,6 @@ def second():
     
     df[f'PRICES IN $ at {current} on {tday}']=rprices2
     
-    # rprices2.insert(0,1)
-    # print(rprices2[:len(rprices2)])
-    # df=pd.DataFrame(df)
-    # df = df.append(pd.Series(rprices2, index=df.columns[:len(rprices2)]), ignore_index=True)
     
     
     for column in df.columns:
@@ -126,12 +116,9 @@ def second():
     names=[]
     for name in data['NAMES']:
             names.append(name)
-    # data.index[1]=[f'PRICES IN $ at {current} on {tday}']
+
     data.to_csv('Cryptocurrencyinfo.csv')
-    # data.plot()
-    # for i in range (len(data.index)):
-    #     data.plot(names[i],rprices2[i])
-    #     plt.show()
+
     del data['NAMES']
     figure, axis = plt.subplots(3,4)
     h=0
@@ -148,11 +135,7 @@ def second():
                     if h==3:
                         h=0
                         c+=1
-    #plt.pause(30)
-    #plt.close()
-    # t2=time.time() 
-    # print(t2-t1)
-    
+
     
     plt.show()
     
@@ -165,66 +148,15 @@ def principe():
             
             data=second()
             
-        # names=[]
-        # for name in data.columns:
-        #     names.append(name)
-            
-        # print(names)
-        # del data['NAMES']
-        # print(data)    
-        
-      
-        
-        # for index,row in data.iterrows():
-        #     # plt.title(names[index])
-        #     # plt.xlabel("Time")
-        #     # plt.ylabel("Price")
-        #     # plt.plot(row)
-        #     # plt.show()
-        #     st.line_chart(row)
     except FileNotFoundError:
         data=initial()
         
         #print(dt)
-    
-            
-        # print(names)
-        # del data['NAMES']
-    print(data)
-        # print(data)    
-    
-    
-   
-      
-    
-    
-        #     #st.line_chart(row,width=10, height=40)
-        #     line_chart = alt.Chart(row).mark_line(interpolate='basis').encode(
-        #         alt.X('x', title='TIME'),
-        #         alt.Y('y', title='PRICE'),
-        #         color='category:N'
-        #     ).properties(
-        #         title=names[index]
-        #     )
-            
-        #     st.altair_chart(line_chart,width=1,height=20)
 
-  
+    print(data)
+
 principe()
   
-# def main():
-#         st.set_page_config(page_title="Cryptocurrency evolution", layout="wide")
-#         st.title("My streamlit website")
-#         if int(time.strftime('%H'))<15:
-#             st.header("Good Morning")
-#         elif int(time.strftime('%H'))>=15:
-#             st.header("Good Evening")
-            
-#         principe()
-
-
-# if __name__ == "__main__":
-#     main()
 
 
     
